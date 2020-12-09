@@ -10,7 +10,7 @@ const parsedDays = days && days.map(day => (
 name={day.name} 
 spots={day.spots} 
 selected={day.name === props.day} 
-setDay={()=>{props.setDay(day.id)}} />));
+setDay={()=>{props.setDay(day.name)}} />));
 
   return (
     <ul>

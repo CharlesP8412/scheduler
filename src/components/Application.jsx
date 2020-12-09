@@ -51,6 +51,7 @@ export default function Application(props) {
   const [day, setDay] = useState("Monday")
   const [days, setDays] = useState([]);
 
+  //Fetch and Set Days
   useEffect(() => {
     axios.get(`http://localhost:8001/api/days`)
     .then(response => {
@@ -59,6 +60,8 @@ export default function Application(props) {
     .catch(error => console.log(error))
   }, [])
   
+
+
 
   const parsedAppts = appointments.map(appt => <Appointment key={appt.id} {...appt} />)
   
