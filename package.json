@@ -2,7 +2,8 @@
   "name": "scheduler",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
+    "dependencies": {
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
     "react": "^16.9.0",
@@ -46,5 +47,6 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.git/"
     ]
-  }
+  },
+  "proxy": "http://localhost:8001"
 }
