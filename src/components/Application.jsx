@@ -7,7 +7,7 @@ import Appointment from "components/Appointment";
 import "components/Application.scss";
 
 
-const appointments = [
+const appointmentsData = [
   {
     id: 1,
     time: "12pm",
@@ -48,23 +48,35 @@ const appointments = [
 
 
 export default function Application(props) {
-  const [day, setDay] = useState("Monday")
-  const [days, setDays] = useState([]);
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {}
+  })
+
+const dailyAppointments = [];
+const parsedAppts = dailyAppointments.map(appt => <Appointment key={appt.id} {...appt} />)
+// const parsedAppts = appointments.map(appt => <Appointment key={appt.id} {...appt} />)
+  
+  const setDay = day => setState({ ...state, day });
+  
+  //Prev mess gets rid of linting warning of using setState in useEffects... somehow...
+  // Previous items in object day and appts held in place w. prev?
+  const setDays = days => setState(prev => ({ ...prev, days }));
+  // const setDays = days => setState({ ...state, days });
 
   //Fetch and Set Days
   useEffect(() => {
     axios.get(`http://localhost:8001/api/days`)
-    .then(response => {
-      setDays(response.data)
-    })
-    .catch(error => console.log(error))
-  }, [])
+      .then(response => { 
+        setDays(response.data)
+      })
+      .catch(error => console.log(error))
+  }, []);
+
   
 
 
-
-  const parsedAppts = appointments.map(appt => <Appointment key={appt.id} {...appt} />)
-  
   return (
     <main className="layout">
       <section className="sidebar">
@@ -75,7 +87,7 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={days} day={day} setDay={setDay} />
+          <DayList days={state.days} day={state.day} setDay={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
