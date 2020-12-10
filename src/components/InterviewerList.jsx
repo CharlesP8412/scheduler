@@ -4,7 +4,6 @@ import "components/InterviewerList.scss"
 
 export default function InterviewerList(props) {
   const { interviewers } = props
-  console.log("PROPS LIST",props)
   const parsedInt = interviewers && interviewers.map(int => (
     <InterviewerListItem
       key={int.id}

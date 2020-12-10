@@ -5,15 +5,18 @@ export function getAppointmentsForDay(state, day) {
   if (filteredDay.length === 0) {
     return [];
   }
+  //Can also use .find (for first match not in array)
   const allAppts = filteredDay[0].appointments
 
-  // Filter day by Day to results
+  // Days Appts to results
   const results = allAppts.map((apptId) => {
     return state.appointments[apptId]
   })
 
   return results;
 }
+
+
 
 export function getInterview(state, interview) {
   if (!interview) {

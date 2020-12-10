@@ -3,6 +3,7 @@ import InterviewerList from "../InterviewerList"
 import Button from "../Button"
 
 export default function Form(props) {
+const interviewers2 = []
   const { interviewer } = props
   //Interviewer ID
   const [currInterviewer, setInterviewer] = useState(interviewer || null);
@@ -43,7 +44,7 @@ export default function Form(props) {
           />
         </form>
         <InterviewerList
-          interviewers={props.interviewers}
+          interviewers={interviewers2}
           value={currInterviewer}
           setInterviewer={handleInterviewer}
         />
