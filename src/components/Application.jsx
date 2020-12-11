@@ -45,6 +45,32 @@ export default function Application(props) {
   }
 
 
+  function cancelInterview(id) {
+console.log("APP cnx id",id,)
+    // Change Appt to null
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    //Make new copy of State w. cnx appt
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    console.log("New Appts",appointments,)
+    //Update DB then State
+    const promise = axios({
+      method: 'DELETE',
+      url: `http://localhost:8000/api/appointments/${id}`,
+    })
+      .then((res) => {
+        console.log("RES",res)
+        setState({ ...state, appointments });
+      })
+    //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
+    return promise
+  }
+
 
 
   const interviewersOfDay = getInterviewersForDay(state, state.day)
@@ -61,6 +87,7 @@ export default function Application(props) {
       interview={interview}
       interviewers={interviewersOfDay}
       bookInterview={bookInterview}
+      cancelInterview={cancelInterview}
     />);
 
   })
