@@ -44,23 +44,6 @@ export default function Application(props) {
     return promise
   }
 
-  function editInterview(id, interview) {
-    //New Appointment Info
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview }
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment
-    };
-
-    return axios.put(`http://localhost:8000/api/appointments/${id}`, {appointment})
-      .then((res) => {
-        console.log(res)
-        setState({ ...state, appointments });
-      })
-  }
   function cancelInterview(id) {
     // Change Appt to null
     const appointment = {
@@ -101,7 +84,6 @@ export default function Application(props) {
       interviewers={interviewersOfDay}
       bookInterview={bookInterview}
       cancelInterview={cancelInterview}
-      editInterview={editInterview}
     />);
 
   })
