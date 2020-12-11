@@ -5,9 +5,12 @@ import Button from "../Button"
 export default function Form(props) {
   const { interviewer } = props
   //Interviewer ID
-  const [currInterviewer, setInterviewer] = useState(interviewer || null);
+  const [currInterviewer, setInterviewer] = useState(interviewer.id || null);
   //Input Text
-  const [currName, setName] = useState(props.name || "");
+  const [currName, setName] = useState(props.student || "");
+
+
+
 
   const handleInterviewer = (intId) => {
     // console.log("@HANDLER ID", intId)

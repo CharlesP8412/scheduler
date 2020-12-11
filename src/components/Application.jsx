@@ -44,9 +44,24 @@ export default function Application(props) {
     return promise
   }
 
+  function editInterview(id, interview) {
+    //New Appointment Info
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
 
+    return axios.put(`http://localhost:8000/api/appointments/${id}`, {appointment})
+      .then((res) => {
+        console.log(res)
+        setState({ ...state, appointments });
+      })
+  }
   function cancelInterview(id) {
-console.log("APP cnx id",id,)
     // Change Appt to null
     const appointment = {
       ...state.appointments[id],
@@ -57,7 +72,6 @@ console.log("APP cnx id",id,)
       ...state.appointments,
       [id]: appointment
     };
-    console.log("New Appts",appointments,)
     //Update DB then State
     const promise = axios({
       method: 'DELETE',
@@ -67,7 +81,6 @@ console.log("APP cnx id",id,)
         console.log("RES",res)
         setState({ ...state, appointments });
       })
-    //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
     return promise
   }
 
@@ -88,6 +101,7 @@ console.log("APP cnx id",id,)
       interviewers={interviewersOfDay}
       bookInterview={bookInterview}
       cancelInterview={cancelInterview}
+      editInterview={editInterview}
     />);
 
   })

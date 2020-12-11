@@ -9,7 +9,6 @@ import useVisualMode from "../../hooks/useVisualMode"
 import "components/Appointment/styles.scss"
 
 export default function Appointment(props) {
-   console.log(props)
    function save(name, interviewer) {
       transition(SAVING)
       const interview = {
@@ -27,8 +26,8 @@ export default function Appointment(props) {
    }
 
    function cancel(apptId) {
-    console.log(apptId)
-     //Delete from DB Update State
+      console.log(apptId)
+      //Delete from DB Update State
       transition(DELETE)
       props.cancelInterview(apptId)
          .then(() => {
@@ -37,7 +36,7 @@ export default function Appointment(props) {
 
    }
 
-
+ 
 
    const { interview } = props
    // console.log("index", props)
@@ -47,6 +46,7 @@ export default function Appointment(props) {
    const SAVING = "SAVING";
    const DELETE = "DELETE";
    const CONFIRM = "CONFIRM";
+   const EDIT = "EDIT";
 
    const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
    return (
@@ -54,23 +54,12 @@ export default function Appointment(props) {
          <Header time={props.time} />
 
          {mode === EMPTY && <Empty onAdd={() => { transition(CREATE) }} />}
-         {mode === SHOW && <Show student={interview.student} interviewer={interview.interviewer} onDelete={confirm} />}
+         {mode === SHOW && <Show student={interview.student} interviewer={interview.interviewer} onDelete={confirm} onEdit={() => transition(EDIT)} />}
          {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => { back() }} onSave={save} />}
          {mode === SAVING && <Status message='Saving...' />}
          {mode === DELETE && <Status message='Deleting...' />}
          {mode === CONFIRM && <Confirm message='Are you sure you want to Delete?' onCancel={() => { back() }} onConfirm={() => { cancel(props.id) }} />}
-
+         {mode === EDIT && <Form interviewers={props.interviewers} student={interview.student} interviewer={interview.interviewer} onCancel={() => { back() }} onSave={save} />}
       </article>
    );
 }
-
-/*
-.add("Form - Edit", () => (
-   <Form
-     name="Joan A Person"
-     interviewers={interviewers}
-     interviewer={4}
-     onSave={action("onSave")}   <<<=============
-     onCancel={action("onCancel")}
-   />
- )) */
