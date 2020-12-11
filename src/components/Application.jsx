@@ -26,15 +26,26 @@ export default function Application(props) {
       ...state.appointments[id],
       interview: { ...interview }
     };
-
+console.log(appointment,"<<<")
     //NEW STATE Appts: Add New Appt to copy of State
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
 
+
+    // useEffect(() => {
+    axios({
+      method: 'PUT',
+      url: `http://localhost:8000/api/appointments/${id}`,
+      data: appointment
+    }).then((res) => { console.log(res) })
+      .catch(e => { console.log(e) })
+
+    // },[])
+
     setState({ ...state, appointments });
-    console.log(state)
+    // data: $(`.formEditSite_${orgId}`).serialize()
   }
 
 
@@ -57,7 +68,6 @@ export default function Application(props) {
   })
 
   const setDay = day => setState({ ...state, day });
-  // useEffect(()=>{axios.get(`http://localhost:8001/api/appointments`)}).then((res)=>console.log("ISOLATED",res))},[]);
   //Fetch and Set State
   useEffect(() => {
     Promise.all([
