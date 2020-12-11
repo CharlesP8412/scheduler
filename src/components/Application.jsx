@@ -20,33 +20,31 @@ export default function Application(props) {
 
   //====================================Func===============================================
   function bookInterview(id, interview) {
-
     //New Appointment
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-console.log(appointment,"<<<")
     //NEW STATE Appts: Add New Appt to copy of State
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
 
-
-    // useEffect(() => {
-    axios({
+    const promise = axios({
       method: 'PUT',
       url: `http://localhost:8000/api/appointments/${id}`,
       data: appointment
-    }).then((res) => { console.log(res) })
-      .catch(e => { console.log(e) })
-
-    // },[])
-
-    setState({ ...state, appointments });
-    // data: $(`.formEditSite_${orgId}`).serialize()
+    })
+      .then((res) => {
+        console.log(res)
+        setState({ ...state, appointments });
+      })
+    //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
+    return promise
   }
+
+
 
 
   const interviewersOfDay = getInterviewersForDay(state, state.day)
