@@ -26,6 +26,7 @@ export default function useVisualMode(initial) {
     setHistory(prev => {
       if (prev.length > 1) {
         prev.pop()
+        //  prev = [...prev, prev.slice(0, prev.length-1)]
         setHistory(prev)
       }
       //Set Mode to the new last entry in array

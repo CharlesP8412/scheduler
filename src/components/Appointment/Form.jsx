@@ -3,7 +3,6 @@ import InterviewerList from "../InterviewerList"
 import Button from "../Button"
 
 export default function Form(props) {
-const interviewers2 = []
   const { interviewer } = props
   //Interviewer ID
   const [currInterviewer, setInterviewer] = useState(interviewer || null);
@@ -44,7 +43,7 @@ const interviewers2 = []
           />
         </form>
         <InterviewerList
-          interviewers={interviewers2}
+          interviewers={props.interviewers}
           value={currInterviewer}
           setInterviewer={handleInterviewer}
         />
@@ -52,7 +51,7 @@ const interviewers2 = []
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={()=> props.onSave(currName, currInterviewer)}>Save</Button>
+          <Button confirm onClick={() => props.onSave(currName, currInterviewer)}>Save</Button>
         </section>
       </section>
     </main>

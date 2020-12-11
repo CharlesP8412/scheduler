@@ -5,7 +5,7 @@ import DayList from "components/DayList";
 import Appointment from "components/Appointment";
 
 
-import { getAppointmentsForDay, getInterview } from "helpers/selectors"
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors"
 
 import "components/Application.scss";
 
@@ -18,19 +18,46 @@ export default function Application(props) {
     appointments: {}
   })
 
-  const dailyAppointments = getAppointmentsForDay(state, state.day);
-  const schedule = dailyAppointments.map((appt) => {
+  //====================================Func===============================================
+  function bookInterview(id, interview) {
+
+    //New Appointment
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    //NEW STATE Appts: Add New Appt to copy of State
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({ ...state, appointments });
+    console.log(state)
+  }
+
+
+  const interviewersOfDay = getInterviewersForDay(state, state.day)
+  const daysAppts = getAppointmentsForDay(state, state.day);
+
+  const schedule = daysAppts.map((appt) => {
+
     const interview = getInterview(state, appt.interview)
+
     return (<Appointment
       key={appt.id}
       id={appt.id}
       time={appt.time}
       interview={interview}
+      interviewers={interviewersOfDay}
+      bookInterview={bookInterview}
     />);
+
   })
 
   const setDay = day => setState({ ...state, day });
-
+  // useEffect(()=>{axios.get(`http://localhost:8001/api/appointments`)}).then((res)=>console.log("ISOLATED",res))},[]);
   //Fetch and Set State
   useEffect(() => {
     Promise.all([
@@ -39,13 +66,14 @@ export default function Application(props) {
       axios.get(`http://localhost:8001/api/interviewers`)
     ])
       .then((all) => {
-
-        setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
+        setState(prev => ({
+          ...prev,
+          days: all[0].data,
+          appointments: all[1].data,
+          interviewers: all[2].data
+        }))
       });
   }, []);
-
-
-
 
 
   //====================================Rendering===============================================
