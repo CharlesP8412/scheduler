@@ -3,7 +3,6 @@ import InterviewerList from "../InterviewerList"
 import Button from "../Button"
 
 export default function Form(props) {
-  console.log("FProps", props)
   const { interviewer } = props
   //Interviewer ID
   const [currInterviewer, setInterviewer] = useState(interviewer? interviewer.id: null);
