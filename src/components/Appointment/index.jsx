@@ -42,7 +42,6 @@ export default function Appointment(props) {
    }
 
    function cancel(apptId) {
-      console.log(apptId)
       //Delete from DB Update State
       transition(DELETE, true)
       props.cancelInterview(apptId)

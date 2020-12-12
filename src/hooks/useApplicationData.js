@@ -26,8 +26,21 @@ export default function useApplicationData() {
   }, []);
 
 
-//Functions to be passed down as Props;
+  //Functions to be passed down as Props;
   const setDay = day => setState({ ...state, day });
+
+  const fetchUpdateSpots = () => {
+    //Pulls new Spots # from DB and updates State
+    axios.get(`http://localhost:8001/api/days`)
+      .then((res) => {
+        //Update Days with new Data
+        setState((prev) => ({
+          ...prev,
+          days: res.data
+        }))
+      })
+  }
+
 
   const bookInterview = function (id, interview) {
     //New Appointment
@@ -47,12 +60,13 @@ export default function useApplicationData() {
       data: appointment
     })
       .then((res) => {
-        console.log(res)
         setState({ ...state, appointments });
       })
+      .then(() => fetchUpdateSpots());
     //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
     return promise
   }
+
 
   function cancelInterview(id) {
     // Change Appt to null
@@ -60,20 +74,22 @@ export default function useApplicationData() {
       ...state.appointments[id],
       interview: null
     };
-    //Make new copy of State w. cnx appt
+
+    //Make new copy of State Appts w. cnx appt
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
+
     //Update DB then State
     const promise = axios({
       method: 'DELETE',
       url: `http://localhost:8000/api/appointments/${id}`,
     })
       .then((res) => {
-        console.log("RES", res)
-        setState({ ...state, appointments });
+        setState({ ...state, appointments })
       })
+      .then(() => fetchUpdateSpots());
     return promise
   }
 
@@ -84,3 +100,8 @@ export default function useApplicationData() {
     cancelInterview
   }
 }
+
+
+//Set to DB - ReCalcs
+
+// Fetch New Spots? Is it it Res? 
