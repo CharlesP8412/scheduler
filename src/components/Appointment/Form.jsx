@@ -39,6 +39,7 @@ export default function Form(props) {
       return;
     }
 
+    setError(null)
     props.onSave(currName, currInterviewer);
   }
 
