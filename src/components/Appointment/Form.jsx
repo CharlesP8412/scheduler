@@ -5,9 +5,10 @@ import Button from "../Button"
 export default function Form(props) {
   const { interviewer } = props
   //Interviewer ID
-  const [currInterviewer, setInterviewer] = useState(interviewer? interviewer.id: null);
+  const [currInterviewer, setInterviewer] = useState(interviewer ? interviewer.id : null);
   //Input Text
   const [currName, setName] = useState(props.student || "");
+  const [error, setError] = useState("");
 
 
 
@@ -32,6 +33,17 @@ export default function Form(props) {
     props.onCancel();
   }
 
+  const validate = () => {
+    if (currName === "") {
+      setError("Student name cannot be blank");
+      return;
+    }
+
+    props.onSave(currName, currInterviewer);
+  }
+
+
+
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -43,8 +55,10 @@ export default function Form(props) {
             placeholder="Enter Student Name"
             value={currName}
             onChange={handleInput}
+            data-testid="student-name-input"
           />
         </form>
+        <section className="appointment__validation">{error}</section>
         <InterviewerList
           interviewers={props.interviewers}
           value={currInterviewer}
@@ -54,7 +68,7 @@ export default function Form(props) {
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={cancel}>Cancel</Button>
-          <Button confirm onClick={() => props.onSave(currName, currInterviewer)}>Save</Button>
+          <Button confirm onClick={() => validate()}>Save</Button>
         </section>
       </section>
     </main>
