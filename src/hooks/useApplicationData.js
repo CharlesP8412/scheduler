@@ -53,18 +53,25 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-
-    const promise = axios({
-      method: 'PUT',
-      url: `http://localhost:8000/api/appointments/${id}`,
-      data: appointment
-    })
+    return axios.put(`http://localhost:8000/api/appointments/${id}`, appointment)
       .then((res) => {
+        // console.log("RES", res)
         setState({ ...state, appointments });
-      })
-      .then(() => fetchUpdateSpots());
-    //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
-    return promise
+      }).then(() => fetchUpdateSpots());
+      //Then carried on in index.js (Appointment Component) 
+
+    //Mock Doesn't like axios broken down this way... Use above
+    // const promise = axios({
+    //   method: 'PUT',
+    //   url: `http://localhost:8000/api/appointments/${id}`,
+    //   data: appointment
+    // })
+    //   .then((res) => {
+    //     setState({ ...state, appointments });
+    //   })
+    //   .then(() => fetchUpdateSpots());
+    // //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
+    // return promise
   }
 
 
