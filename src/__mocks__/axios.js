@@ -1,3 +1,4 @@
+
 const fixtures = {
   days: [
     {
@@ -80,5 +81,23 @@ export default {
         data: fixtures.interviewers
       });
     }
+  }),
+
+
+  put: jest.fn(url => {
+    const localhost = "http://localhost:8000"
+    // console.log("URL MOCK", url)
+    if (url === localhost + "/api/appointments/1") {
+      return Promise.resolve({
+        status: 204,
+        statusText: "No Content"
+      })
+      .then(()=>{
+        fixtures.days[0].spots -= 1;
+      });
+    }
+
   })
+
+
 }
