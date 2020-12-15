@@ -59,7 +59,7 @@ export default function Appointment(props) {
    const { mode, transition, back } = useVisualMode(props.interview ? SHOW : EMPTY);
    return (
       <article className="appointment" data-testid="appointment">
-         
+
          <Header time={props.time} />
 
          {mode === EMPTY && <Empty onAdd={() => { transition(CREATE) }} />}
@@ -69,8 +69,8 @@ export default function Appointment(props) {
          {mode === DELETE && <Status message='Deleting...' />}
          {mode === CONFIRM && <Confirm message='Are you sure you want to Delete?' onCancel={() => { back() }} onConfirm={() => { cancel(props.id) }} />}
          {mode === EDIT && <Form interviewers={props.interviewers} student={interview.student} interviewer={interview.interviewer} onCancel={() => { back() }} onSave={save} />}
-         {mode === ERROR_SAVE && <Error message='Could not save' onClose={()=>{back()}}/>}
-         {mode === ERROR_DELETE && <Error message='Could not delete' onClose={()=>{back()}}/>}
+         {mode === ERROR_SAVE && <Error message='Could not save' onClose={() => { back() }} />}
+         {mode === ERROR_DELETE && <Error message='Could not delete' onClose={() => { back() }} />}
 
       </article>
    );

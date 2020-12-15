@@ -88,16 +88,35 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
+
+
+    return axios.delete(`http://localhost:8000/api/appointments/${id}`)
+        .then((res) => {
+          setState({ ...state, appointments })
+        })
+        .then(() => fetchUpdateSpots());
+
+
+
+    // return axios({
+    //   method: 'DELETE',
+    //   url: `http://localhost:8000/api/appointments/${id}`,
+    // })
+    //   .then((res) => {
+    //     setState({ ...state, appointments })
+    //   })
+    //   .then(() => fetchUpdateSpots());
+
     //Update DB then State
-    const promise = axios({
-      method: 'DELETE',
-      url: `http://localhost:8000/api/appointments/${id}`,
-    })
-      .then((res) => {
-        setState({ ...state, appointments })
-      })
-      .then(() => fetchUpdateSpots());
-    return promise
+    // const promise = axios({
+    //   method: 'DELETE',
+    //   url: `http://localhost:8000/api/appointments/${id}`,
+    // })
+    //   .then((res) => {
+    //     setState({ ...state, appointments })
+    //   })
+    //   .then(() => fetchUpdateSpots());
+    // return promise
   }
 
   return {
