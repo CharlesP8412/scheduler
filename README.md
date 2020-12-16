@@ -33,6 +33,7 @@ To run your own API locally see:
 - Webpack
 - Webpack Dev Server
 - Heroku (Remote )
+- CircleC 
 ```
 
 -----------------------------------

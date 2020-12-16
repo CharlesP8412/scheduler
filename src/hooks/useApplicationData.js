@@ -16,6 +16,7 @@ export default function useApplicationData() {
   const API = herokuAPI
 
   // Local API Routes - To Use comment out above herokueAPI then uncomment below
+  // To pass Tests you must also change the ./src/__mocks__/axios.js local host variable
   // const localAPI = {
   //   days: "http://localhost:8001/api/days/",
   //   appointments: "http://localhost:8001/api/appointments/",
@@ -40,9 +41,6 @@ export default function useApplicationData() {
         }))
       });
   }, []);
-
-  // Axios like this doens't work says axios is not a function (Simlar to edit or delete)
-  // axios({method:'get', url: '/api/days/', baseURL: `http://scheduler-cvp.herokuapp.com` }),
 
   //Functions to be passed down as Props;
   const setDay = day => setState({ ...state, day });
