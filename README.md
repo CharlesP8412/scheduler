@@ -7,7 +7,8 @@ Spots remaining for each day of the week will automatically update with any chan
 
 Built with components from Storybooks.js, the frontend communicates with an API server over HTTP using JSON format.
 
-Data is persisted by an API server using a PostgreSQL database please see: !["Overview"](https://github.com/CharlesP8412/scheduler-api)
+Data is persisted by an API server using a PostgreSQL database please see: 
+!["Overview"](https://github.com/CharlesP8412/scheduler-api)
 
 ### Tools used: 
 ```
@@ -21,8 +22,8 @@ Data is persisted by an API server using a PostgreSQL database please see: !["Ov
 - Webpack Dev Server
 ```
 ## Screenshots
-!["Overview"]()
-!["Static Overview"]()
+!["Overview"](https://raw.githubusercontent.com/CharlesP8412/scheduler/master/docs/overview.gif)
+!["Static Overview"](https://raw.githubusercontent.com/CharlesP8412/scheduler/master/docs/Screenshot%201.png)
 
 
 ## Dependencies
