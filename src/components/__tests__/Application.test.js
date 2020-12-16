@@ -10,7 +10,7 @@ afterEach(cleanup);
 describe("Application", () => {
 
 
-  it.only("defaults to Monday and changes the schedule when a new day is selected", async () => {
+  it("defaults to Monday and changes the schedule when a new day is selected", async () => {
     const { getByText } = render(<Application />);
 
     await waitForElement(() => getByText("Monday")).then(() => {

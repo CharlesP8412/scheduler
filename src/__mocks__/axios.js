@@ -54,11 +54,16 @@ const fixtures = {
   }
 };
 
+/* 
+Issue with incoming URL vs local host; can change match heroku but only want ot make that change in one spot... (app data Hook)
 
+
+*/
 export default {
+
   get: jest.fn(url => {
-    console.log("JEST URL ", url)
-    const localhost = "http://localhost:8001"
+    // console.log("JEST URL ", url)
+    const localhost = "http://scheduler-cvp.herokuapp.com"
     if (url === localhost + "/api/days/") {
       return Promise.resolve({
         status: 200,
@@ -86,7 +91,7 @@ export default {
 
 
   put: jest.fn(url => {
-    const localhost = "http://localhost:8001"
+    const localhost = "http://scheduler-cvp.herokuapp.com"
     if (url === localhost + "/api/appointments/1") {
       return Promise.resolve({
         status: 204,
@@ -108,7 +113,7 @@ export default {
 
 
   delete: jest.fn(url => {
-    const localhost = "http://localhost:8001"
+    const localhost = "http://scheduler-cvp.herokuapp.com"
     if (url === localhost + "/api/appointments/2") {
       return Promise.resolve({
         status: 204,
