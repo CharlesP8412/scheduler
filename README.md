@@ -7,8 +7,16 @@ Spots remaining for each day of the week will automatically update with any chan
 
 Built with components from Storybooks.js, the frontend communicates with an API server over HTTP using JSON format.
 
-Data is persisted by an API server using a PostgreSQL database please see: 
+Data is persisted by an API server using a PostgreSQL database.  Currently the app routes to Heroku for the API
+
+Heroku API Routes
+!["http://scheduler-cvp.herokuapp.com/api/days"](http://scheduler-cvp.herokuapp.com/api/days)
+!["http://scheduler-cvp.herokuapp.com/api/appointments"](http://scheduler-cvp.herokuapp.com/api/appointments)
+!["http://scheduler-cvp.herokuapp.com/api/interviewers"](http://scheduler-cvp.herokuapp.com/api/interviewers)
+
+If you want to run your own API locally please see: 
 !["scheduler-api"](https://github.com/CharlesP8412/scheduler-api)
+
 
 ### Tools used: 
 ```

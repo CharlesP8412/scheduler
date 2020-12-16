@@ -8,12 +8,18 @@ export default function useApplicationData() {
     appointments: {}
   })
 
+  const herokuAPI = {
+  days: "http://scheduler-cvp.herokuapp.com/api/days/",
+  appointments: "http://scheduler-cvp.herokuapp.com/api/appointments/",
+  interviewers: "http://scheduler-cvp.herokuapp.com/api/interviewers/"
+  }
+
   // //Fetch and Set State
   useEffect(() => {
     Promise.all([
-      axios.get(`http://localhost:8001/api/days`),
-      axios.get(`http://localhost:8001/api/appointments`),
-      axios.get(`http://localhost:8001/api/interviewers`)
+      axios.get(herokuAPI.days),
+      axios.get(herokuAPI.appointments),
+      axios.get(herokuAPI.interviewers)
     ])
       .then((all) => {
         setState(prev => ({
@@ -31,7 +37,7 @@ export default function useApplicationData() {
 
   const fetchUpdateSpots = () => {
     //Pulls new Spots # from DB and updates State
-    axios.get(`http://localhost:8001/api/days`)
+    axios.get(herokuAPI.days)
       .then((res) => {
         //Update Days with new Data
         setState((prev) => ({
@@ -53,7 +59,7 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    return axios.put(`http://localhost:8000/api/appointments/${id}`, appointment)
+    return axios.put((herokuAPI.appointments+id), appointment)
       .then((res) => {
         // console.log("RES", res)
         setState({ ...state, appointments });
@@ -90,7 +96,7 @@ export default function useApplicationData() {
 
 
 
-    return axios.delete(`http://localhost:8000/api/appointments/${id}`)
+    return axios.delete(herokuAPI.appointments+id)
         .then((res) => {
           setState({ ...state, appointments })
         })
