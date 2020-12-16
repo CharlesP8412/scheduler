@@ -11,9 +11,9 @@ Data is persisted by an API server using a PostgreSQL database.  Currently the a
 
 ### Heroku API Routes
 -------------------------------
-![http://scheduler-cvp.herokuapp.com/api/days](http://scheduler-cvp.herokuapp.com/api/days)
-![http://scheduler-cvp.herokuapp.com/api/appointments](http://scheduler-cvp.herokuapp.com/api/appointments)
-![http://scheduler-cvp.herokuapp.com/api/interviewers](http://scheduler-cvp.herokuapp.com/api/interviewers)
+Days | ![http://scheduler-cvp.herokuapp.com/api/days](http://scheduler-cvp.herokuapp.com/api/days)
+Appointments | ![http://scheduler-cvp.herokuapp.com/api/appointments](http://scheduler-cvp.herokuapp.com/api/appointments)
+Interviewers | ![http://scheduler-cvp.herokuapp.com/api/interviewers](http://scheduler-cvp.herokuapp.com/api/interviewers)
 
 If you want to run your own API locally please see: 
 !["scheduler-api"](https://github.com/CharlesP8412/scheduler-api)
@@ -57,7 +57,7 @@ If you want to run your own API locally please see:
 
 To Run:                             | Shell Command | Note
 ------------                        | ------------- | -------------
- Running Webpack Development Server | `npm start`| *React will automatically open http://localhost:8000/ when loaded.*
+ Running Webpack Development Server | `npm start`| *Will automatically open http://localhost:8000/ when loaded.*
 Running Jest Test Framework         | `npm test` |
 Storybook Visual Testbed            | `npm run storybook`| Served at http://localhost:9009/*
 Cypress End to End Testbed          | `npm run cypress`| Webpack Development Server MUST be running prior to this command
