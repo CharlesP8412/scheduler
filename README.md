@@ -8,7 +8,7 @@ Spots remaining for each day of the week will automatically update with any chan
 Built with components from Storybooks.js, the frontend communicates with an API server over HTTP using JSON format.
 
 Data is persisted by an API server using a PostgreSQL database please see: 
-!["Overview"](https://github.com/CharlesP8412/scheduler-api)
+!["scheduler-api"](https://github.com/CharlesP8412/scheduler-api)
 
 ### Tools used: 
 ```
@@ -34,29 +34,34 @@ Data is persisted by an API server using a PostgreSQL database please see:
 - Classnames
 - Normalize.css
 
+*Will start without API server but will not be populated (Data or buttons) (!["scheduler-api"](https://github.com/CharlesP8412/scheduler-api))*
+
 ## Setup
+1. Fork this repository, then clone your fork of this repository.
+2. Install dependencies using the `npm install` command.
 
-Install dependencies with `npm install`.
-
-## Running Webpack Development Server
-
+ ### Running Webpack Development Server
 ```sh
 npm start
 ```
+*React will automatically open http://localhost:8000/ when loaded.*
 
-## Running Jest Test Framework
+### Running Jest Test Framework
 
 ```sh
 npm test
 ```
 
-## Running Storybook Visual Testbed
+### Running Storybook Visual Testbed
 
 ```sh
 npm run storybook
 ```
-
-## Running Cypress End to End Testbed
+ *Story book will be served at http://localhost:9009/*
+### Running Cypress End to End Testbed
+Must have the following running prior to cypress:
+1. Scheduler_api (With Databse)
+2. Webpack Development Server
 
 ```sh
 npm run cypress
