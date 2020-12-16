@@ -13,16 +13,16 @@ export default function useApplicationData() {
     appointments: "http://scheduler-cvp.herokuapp.com/api/appointments/",
     interviewers: "http://scheduler-cvp.herokuapp.com/api/interviewers/"
   }
-  const API = herokuAPI
+  // const API = herokuAPI
 
   // Local API Routes - To Use comment out above herokueAPI then uncomment below
   // To pass Tests you must also change the ./src/__mocks__/axios.js local host variable
-  // const localAPI = {
-  //   days: "http://localhost:8001/api/days/",
-  //   appointments: "http://localhost:8001/api/appointments/",
-  //   interviewers: "http://localhost:8001/api/interviewers/"
-  // }
-  // const API = localAPI
+  const localAPI = {
+    days: "http://localhost:8001/api/days/",
+    appointments: "http://localhost:8001/api/appointments/",
+    interviewers: "http://localhost:8001/api/interviewers/"
+  }
+  const API = localAPI
 
 
   // //Fetch and Set State
