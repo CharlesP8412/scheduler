@@ -1,8 +1,6 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
 
-
-
 import Form from "components/Appointment/Form";
 
 afterEach(cleanup);
@@ -39,8 +37,7 @@ describe("Form", () => {
     expect(mockOnSave).not.toHaveBeenCalled();
   });
 
- 
-
+ //========================================================================
 
   it("can successfully save after trying to submit an empty student name", () => {
     const onSave = jest.fn();
@@ -64,8 +61,6 @@ describe("Form", () => {
     expect(onSave).toHaveBeenCalledTimes(1);
     expect(onSave).toHaveBeenCalledWith("Lydia Miller-Jones", null);
   });
-
-
 
   //========================================================================
   it("calls onCancel and resets the input field", () => {
@@ -93,8 +88,5 @@ describe("Form", () => {
 
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
-
-
-
 
 });

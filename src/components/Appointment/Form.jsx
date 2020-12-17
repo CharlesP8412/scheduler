@@ -14,7 +14,6 @@ export default function Form(props) {
 
 
   const handleInterviewer = (intId) => {
-    // console.log("@HANDLER ID", intId)
     setInterviewer(intId)
   }
 

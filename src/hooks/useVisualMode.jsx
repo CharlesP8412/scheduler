@@ -18,8 +18,8 @@ export default function useVisualMode(initial) {
       setHistory(prev => {
         return [...prev, newMode]
       })
-    }
-  }
+    };
+  };
 
   function back() {
     //Pop off latest in history[] (but not directly and not if only one)
@@ -33,9 +33,9 @@ export default function useVisualMode(initial) {
       setMode(history[history.length - 1])
     })
 
-  }
+  };
   return { mode, transition, back };
-}
+};
 
 
 

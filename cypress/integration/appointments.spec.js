@@ -1,6 +1,6 @@
 describe("Appointment", () => {
   beforeEach(() => {
-    cy.request("GET", "/api/debug/reset")
+    cy.request("GET", "/api/debug/reset");
     cy.visit("/");
     cy.contains("Monday");
   })
@@ -22,7 +22,6 @@ describe("Appointment", () => {
 
   it("Edit an interview", () => {
     //Click Edit
-    //Had to force click b/c hover doesn't work ATM
     cy.get("[alt='Edit']")
     .first()
     .click({ force: true });

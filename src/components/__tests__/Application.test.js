@@ -62,7 +62,6 @@ describe("Application", () => {
     fireEvent.click(getByText(appointment, "Confirm"));
     //check deleting msg
     expect(getByText(appointment, /deleting/i)).toBeInTheDocument();
-    // console.log(prettyDOM(appointment))
     //Wait for delete
     await waitForElement(() => getByAltText(appointment, "Add"));
     // Cfm Spots is adjusted

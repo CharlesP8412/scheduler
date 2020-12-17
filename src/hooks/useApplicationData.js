@@ -72,23 +72,10 @@ export default function useApplicationData() {
     };
     return axios.put((API.appointments + id), appointment)
       .then((res) => {
-        // console.log("RES", res)
         setState({ ...state, appointments });
       }).then(() => fetchUpdateSpots());
     //Then carried on in index.js (Appointment Component) 
 
-    //Mock Doesn't like axios broken down this way... Use above
-    // const promise = axios({
-    //   method: 'PUT',
-    //   url: `http://localhost:8000/api/appointments/${id}`,
-    //   data: appointment
-    // })
-    //   .then((res) => {
-    //     setState({ ...state, appointments });
-    //   })
-    //   .then(() => fetchUpdateSpots());
-    // //Retrun the above axios promies (built into Axios), within index, can add more .thens and catch
-    // return promise
   }
 
 
@@ -105,35 +92,12 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-
-
     return axios.delete(API.appointments + id)
       .then((res) => {
         setState({ ...state, appointments })
       })
       .then(() => fetchUpdateSpots());
 
-
-
-    // return axios({
-    //   method: 'DELETE',
-    //   url: `http://localhost:8000/api/appointments/${id}`,
-    // })
-    //   .then((res) => {
-    //     setState({ ...state, appointments })
-    //   })
-    //   .then(() => fetchUpdateSpots());
-
-    //Update DB then State
-    // const promise = axios({
-    //   method: 'DELETE',
-    //   url: `http://localhost:8000/api/appointments/${id}`,
-    // })
-    //   .then((res) => {
-    //     setState({ ...state, appointments })
-    //   })
-    //   .then(() => fetchUpdateSpots());
-    // return promise
   }
 
   return {
