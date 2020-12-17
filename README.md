@@ -73,3 +73,4 @@ Cypress End to End Testbed          | `npm run cypress`| Webpack Development Ser
 ## Known Issues
 - Concurrent users need to refresh to see LIVE changes made by other users
   - [ ] Implement Websockets
+- CircleCI productions Pipeline not complete
