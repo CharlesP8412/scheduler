@@ -7,6 +7,11 @@ Spots remaining for each day of the week will automatically update with any chan
 
 Built with components from Storybooks.js, the frontend communicates with an API server over HTTP using JSON format.
 
+## Screenshots
+!["Overview"](https://raw.githubusercontent.com/CharlesP8412/scheduler/master/docs/overview.gif)
+
+-----------------------------------
+
 #### Data is persisted by an API server using a PostgreSQL database.  Currently the app routes to a Heroku server for the API:
 
 Route | Heroku Route (Url)
@@ -35,11 +40,6 @@ To run your own API locally see:
 - Heroku (Remote )
 - CircleC (Pipeline)
 ```
-
------------------------------------
-
-## Screenshots
-!["Overview"](https://raw.githubusercontent.com/CharlesP8412/scheduler/master/docs/overview.gif)
 
 -----------------------------------
 
