@@ -9,9 +9,9 @@ export default function useApplicationData() {
   })
 
   const herokuAPI = {
-    days: "http://scheduler-cvp.herokuapp.com/api/days/",
-    appointments: "http://scheduler-cvp.herokuapp.com/api/appointments/",
-    interviewers: "http://scheduler-cvp.herokuapp.com/api/interviewers/"
+    days: "https://scheduler-cvp.herokuapp.com/api/days/",
+    appointments: "https://scheduler-cvp.herokuapp.com/api/appointments/",
+    interviewers: "https://scheduler-cvp.herokuapp.com/api/interviewers/"
   }
   const API = herokuAPI
 
@@ -59,7 +59,7 @@ export default function useApplicationData() {
   }
 
 
-  const bookInterview = function (id, interview) {
+  const bookInterview = function(id, interview) {
     //New Appointment
     const appointment = {
       ...state.appointments[id],
