@@ -7,7 +7,11 @@ Spots remaining for each day of the week will automatically update with any chan
 
 Built with components from Storybooks.js, the frontend communicates with an API server over HTTP using JSON format.
 
+## ![Demo](https://scheduler-cvp.netlify.app/)
+###### Note: DB API is hosted on Heroku and will take a minute to 'wake up'.
+
 ## Screenshots
+
 !["Overview"](https://raw.githubusercontent.com/CharlesP8412/scheduler/master/docs/overview.gif)
 
 -----------------------------------
@@ -73,4 +77,4 @@ Cypress End to End Testbed          | `npm run cypress`| Webpack Development Ser
 ## Known Issues
 - Concurrent users need to refresh to see LIVE changes made by other users
   - [ ] Implement Websockets
-- CircleCI productions Pipeline not complete
+- CircleCI productions Pipeline not complete (Currently Runs tests and builds production)
