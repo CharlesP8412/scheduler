@@ -7,7 +7,7 @@ Spots remaining for each day of the week will automatically update with any chan
 
 Built with components from Storybooks.js, the frontend communicates with an API server over HTTP using JSON format.
 
-## ![Demo](https://scheduler-cvp.netlify.app/)
+## [Demo](https://scheduler-cvp.netlify.app/)
 ###### Note: DB API is hosted on Heroku and will take a minute to 'wake up'.
 
 ## Screenshots
